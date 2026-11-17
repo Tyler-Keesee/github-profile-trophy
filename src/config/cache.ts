@@ -53,7 +53,9 @@ class CacheProvider {
         px: CONSTANTS.REDIS_TTL,
       });
     } catch (e) {
-      Logger.error(`Failed to set cache: ${e instanceof Error ? e.message : String(e)}`);
+      Logger.error(
+        `Failed to set cache: ${e instanceof Error ? e.message : String(e)}`,
+      );
     }
   }
 
@@ -66,7 +68,9 @@ class CacheProvider {
       }
       await this.client?.del(key);
     } catch (e) {
-      Logger.error(`Failed to delete cache: ${e instanceof Error ? e.message : String(e)}`);
+      Logger.error(
+        `Failed to delete cache: ${e instanceof Error ? e.message : String(e)}`,
+      );
     }
   }
 }

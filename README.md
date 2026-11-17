@@ -23,7 +23,8 @@
 
 ## Windows 11: clone and run your fork (PowerShell)
 
-This is a **Deno TypeScript service**, not a Python or Node/npm application. Install Git and Deno first, then run each command individually:
+This is a **Deno TypeScript service**, not a Python or Node/npm application.
+Install Git and Deno first, then run each command individually:
 
 ```powershell
 winget install --id DenoLand.Deno --exact
@@ -47,9 +48,14 @@ Set-Location .\github-profile-trophy
 deno task start
 ```
 
-For your local instance, open **http://127.0.0.1:8080/?username=Tyler-Keesee**. The service requires outgoing access to GitHub APIs, and API rate limits apply. Stop with Ctrl+C.
+For your local instance, open **http://127.0.0.1:8080/?username=Tyler-Keesee**.
+The service requires outgoing access to GitHub APIs, and API rate limits apply.
+Stop with Ctrl+C.
 
-**Important:** The old `deno task start` invoked nonexistent `debug.ts`. The actual included entry point is `main.ts`. The start task now has explicit network/environment permissions instead of granting unrestricted `-A`. Development/debugging: `deno task debug`.
+**Important:** The old `deno task start` invoked nonexistent `debug.ts`. The
+actual included entry point is `main.ts`. The start task now has explicit
+network/environment permissions instead of granting unrestricted `-A`.
+Development/debugging: `deno task debug`.
 
 Optional checks, separately:
 
@@ -61,7 +67,9 @@ deno fmt --check
 deno task lint
 ```
 
-This is a fork of an older Deno 1.x project. Imports from legacy remote modules might need additional updates for Deno 2.x. Start command correction does not certify successful live GitHub API responses.
+This is a fork of an older Deno 1.x project. Imports from legacy remote modules
+might need additional updates for Deno 2.x. Start command correction does not
+certify successful live GitHub API responses.
 
 ---
 
