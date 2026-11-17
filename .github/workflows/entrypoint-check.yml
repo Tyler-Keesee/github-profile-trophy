@@ -1,0 +1,21 @@
+name: Verify Deno application entrypoint
+on:
+  push:
+    branches: [master]
+  pull_request:
+jobs:
+  check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Verify that the start task refers to the real entry file
+        run: deno eval "const c=JSON.parse(Deno.readTextFileSync('deno.json'));if(!c.tasks.start.includes('main.ts')||!Deno.statSync('main.ts').isFile)Deno.exit(1)"
+      - name: Type check application
+        run: deno check main.ts

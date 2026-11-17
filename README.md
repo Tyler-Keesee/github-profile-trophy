@@ -21,6 +21,58 @@
   </a>
 </div>
 
+## Windows 11: clone and run your fork (PowerShell)
+
+This is a **Deno TypeScript service**, not a Python or Node/npm application.
+Install Git and Deno first, then run each command individually:
+
+```powershell
+winget install --id DenoLand.Deno --exact
+```
+
+Close and reopen PowerShell so Deno is on PATH:
+
+```powershell
+deno --version
+```
+
+```powershell
+git clone https://github.com/Tyler-Keesee/github-profile-trophy.git
+```
+
+```powershell
+Set-Location .\github-profile-trophy
+```
+
+```powershell
+deno task start
+```
+
+For your local instance, open **http://127.0.0.1:8080/?username=Tyler-Keesee**.
+The service requires outgoing access to GitHub APIs, and API rate limits apply.
+Stop with Ctrl+C.
+
+**Important:** The old `deno task start` invoked nonexistent `debug.ts`. The
+actual included entry point is `main.ts`. The start task now has explicit
+network/environment permissions instead of granting unrestricted `-A`.
+Development/debugging: `deno task debug`.
+
+Optional checks, separately:
+
+```powershell
+deno fmt --check
+```
+
+```powershell
+deno task lint
+```
+
+This is a fork of an older Deno 1.x project. Imports from legacy remote modules
+might need additional updates for Deno 2.x. Start command correction does not
+certify successful live GitHub API responses.
+
+---
+
 # Quick Start
 
 Add the following code to your readme. When pasting the code into your profile's

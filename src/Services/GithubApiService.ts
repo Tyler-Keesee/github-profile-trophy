@@ -105,7 +105,7 @@ export class GithubApiService extends GithubRepository {
         );
       });
     } catch (error) {
-      if (error.cause instanceof ServiceError) {
+      if (error instanceof Error && error.cause instanceof ServiceError) {
         Logger.error(error.cause.message);
         return error.cause;
       }
