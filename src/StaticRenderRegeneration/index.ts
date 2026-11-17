@@ -20,7 +20,7 @@ export async function staticRenderRegeneration(
   if (cacheManager.isCacheValid) {
     const cache = readCache(cacheManager.cacheFilePath);
     if (cache !== null) {
-      return new Response(cache, {
+      return new Response(new TextDecoder().decode(cache), {
         headers: options.headers ?? new Headers({}),
       });
     }
